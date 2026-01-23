@@ -15,7 +15,7 @@ function Hero() {
       <div className="container hero-content">
         <div className="hero-text">
           <span className="badge">Welcome to Secret Surf</span>
-          <h1>Experience The Ultimate<br />Beach Lifestyle</h1>
+          <h1>Experience The Ultimate Beach Lifestyle</h1>
           <p>Surf, Stay, Dine & Create Memories - All in One Place</p>
           <div className="hero-buttons">
             <a href="#contact" className="btn btn-book">Book Now</a>
