@@ -1,0 +1,210 @@
+.packages {
+  background: var(--bg-light);
+}
+
+.package-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+}
+
+.tab {
+  padding: 1rem 2rem;
+  border: 2px solid var(--primary-yellow);
+  background: transparent;
+  color: var(--primary-black);
+  border-radius: 50px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.tab:hover {
+  background: var(--primary-yellow);
+  color: var(--primary-black);
+}
+
+.tab.active {
+  background: var(--primary-yellow);
+  color: var(--primary-black);
+}
+
+.packages-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+}
+
+.package-card {
+  background: var(--white);
+  padding: 2.5rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  border: 1px solid #e0e0e0;
+  overflow: hidden;
+}
+
+.package-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary-yellow) 0%, var(--accent-yellow) 100%);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.package-card:hover::before {
+  transform: scaleX(1);
+}
+
+.package-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 40px rgba(254, 229, 0, 0.3);
+  border-top: 4px solid var(--primary-yellow);
+}
+
+.package-card h3 {
+  font-size: 1.75rem;
+  margin-bottom: 0.5rem;
+  color: var(--primary-black);
+}
+
+.target, .duration, .capacity {
+  color: var(--text-light);
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+}
+
+.price {
+  margin: 1.5rem 0;
+  padding: 1.5rem;
+  background: var(--bg-light);
+  border-radius: 12px;
+  text-align: center;
+}
+
+.currency {
+  font-size: 1rem;
+  color: var(--text-light);
+  margin-right: 0.25rem;
+}
+
+.amount {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--primary-black);
+}
+
+.period {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--text-light);
+  margin-top: 0.25rem;
+}
+
+.includes {
+  margin: 1.5rem 0;
+  flex-grow: 1;
+}
+
+.includes h4 {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  color: var(--primary-dark);
+}
+
+.includes ul {
+  list-style: none;
+}
+
+.includes li {
+  padding: 0.5rem 0;
+  color: var(--text-light);
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.includes li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--primary-yellow);
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.not-included {
+  margin: 1rem 0;
+  padding: 0.75rem;
+  background: #FEF3C7;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  color: #92400E;
+}
+
+.discounts, .pricing-note, .note {
+  font-size: 0.875rem;
+  color: var(--primary-black);
+  font-weight: 700;
+  margin: 1rem 0;
+  padding: 0.75rem;
+  background: rgba(254, 229, 0, 0.2);
+  border-radius: 8px;
+  text-align: center;
+  border-left: 3px solid var(--primary-yellow);
+}
+
+.package-card .btn {
+  width: 100%;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+@media (max-width: 768px) {
+  .packages-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .package-tabs {
+    flex-direction: column;
+  }
+
+  .tab {
+    width: 100%;
+  }
+
+  .package-card {
+    padding: 1.5rem;
+  }
+
+  .amount {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .section-subtitle {
+    font-size: 0.95rem;
+  }
+
+  .package-card h3 {
+    font-size: 1.5rem;
+  }
+
+  .amount {
+    font-size: 1.75rem;
+  }
+}
