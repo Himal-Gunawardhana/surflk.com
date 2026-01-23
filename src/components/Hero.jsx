@@ -18,6 +18,7 @@ function Hero() {
           <h1>Experience The Ultimate<br />Beach Lifestyle</h1>
           <p>Surf, Stay, Dine & Create Memories - All in One Place</p>
           <div className="hero-buttons">
+            <a href="#contact" className="btn btn-book">Book Now</a>
             <a href="#packages" className="btn btn-primary">View Packages</a>
             <a href="#menu" className="btn btn-secondary">See Our Menu</a>
           </div>
