@@ -159,15 +159,42 @@
 }
 
 @media (max-width: 480px) {
-  .logo h2 {
-    font-size: 1.5rem;
+  .navbar {
+    padding: 0.75rem 0;
+  }
+
+  .logo {
+    gap: 0.5rem;
+  }
+
+  .logo-image {
+    height: 35px;
+  }
+
+  .logo h2,
+  .logo-text-wrapper h2 {
+    font-size: 1.1rem;
   }
 
   .logo .tagline {
-    font-size: 0.65rem;
+    font-size: 0.55rem;
   }
 
   .nav-links {
     padding: 1.5rem 1rem;
+    top: 65px;
+  }
+
+  .nav-links a {
+    font-size: 1rem;
+    padding: 0.5rem 0;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+  }
+
+  .nav-links .btn {
+    min-height: 44px;
+    padding: 0.75rem 1.5rem;
   }
 }

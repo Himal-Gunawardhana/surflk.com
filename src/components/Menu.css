@@ -106,32 +106,71 @@
 @media (max-width: 768px) {
   .menu-grid {
     grid-template-columns: 1fr;
+    gap: 1rem;
   }
 
   .menu-tabs {
-    flex-direction: column;
+    gap: 0.75rem;
   }
 
   .menu-tabs .tab {
-    width: 100%;
+    padding: 0.75rem 1.25rem;
+    font-size: 0.9rem;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .menu-item {
+    padding: 1.25rem;
+  }
+
+  .menu-item h3 {
+    font-size: 1.15rem;
   }
 }
 
 @media (max-width: 480px) {
+  .menu-grid {
+    gap: 0.75rem;
+  }
+
+  .menu-tabs {
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0;
+  }
+
+  .menu-tabs .tab {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-size: 0.875rem;
+  }
+
   .menu-item {
     padding: 1rem;
   }
 
   .menu-item h3 {
-    font-size: 1.1rem;
+    font-size: 1.05rem;
   }
 
   .menu-item .price {
-    font-size: 1rem;
+    font-size: 0.95rem;
+    padding: 0.2rem 0.6rem;
   }
 
-  .menu-tabs .tab {
-    padding: 0.625rem 1rem;
-    font-size: 0.875rem;
+  .menu-item p {
+    font-size: 0.85rem;
+  }
+
+  .menu-note {
+    padding: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  .menu-note p {
+    font-size: 0.9rem;
   }
 }

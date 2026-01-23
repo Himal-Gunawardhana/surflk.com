@@ -172,18 +172,25 @@
 @media (max-width: 768px) {
   .packages-grid {
     grid-template-columns: 1fr;
+    gap: 1.5rem;
   }
 
   .package-tabs {
-    flex-direction: column;
+    gap: 0.75rem;
   }
 
   .tab {
-    width: 100%;
+    padding: 0.875rem 1.5rem;
+    font-size: 0.95rem;
+    min-height: 44px;
   }
 
   .package-card {
-    padding: 1.5rem;
+    padding: 2rem;
+  }
+
+  .package-card h3 {
+    font-size: 1.5rem;
   }
 
   .amount {
@@ -192,6 +199,20 @@
 }
 
 @media (max-width: 480px) {
+  .packages-grid {
+    gap: 1rem;
+  }
+
+  .package-tabs {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .tab {
+    width: 100%;
+    padding: 0.75rem 1rem;
+  }
+
   .section-title {
     font-size: 2rem;
   }
@@ -200,11 +221,42 @@
     font-size: 0.95rem;
   }
 
+  .package-card {
+    padding: 1.5rem;
+  }
+
   .package-card h3 {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
+  }
+
+  .target, .duration, .capacity {
+    font-size: 0.9rem;
   }
 
   .amount {
     font-size: 1.75rem;
+  }
+
+  .currency {
+    font-size: 0.9rem;
+  }
+
+  .includes h4 {
+    font-size: 0.95rem;
+  }
+
+  .includes li {
+    font-size: 0.9rem;
+    padding: 0.4rem 0 0.4rem 1.5rem;
+  }
+
+  .discounts, .pricing-note, .note, .not-included {
+    font-size: 0.8rem;
+  }
+
+  .package-card .btn {
+    font-size: 0.95rem;
+    padding: 0.75rem 1.5rem;
+    min-height: 44px;
   }
 }

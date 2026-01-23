@@ -137,64 +137,90 @@
 
 @media (max-width: 768px) {
   .hero {
-    padding: 0 1rem;
+    padding: 0 1.5rem;
+    min-height: auto;
+    padding-top: 80px;
+    padding-bottom: 3rem;
+  }
+
+  .hero-content {
+    padding-top: 60px;
+  }
+
+  .badge {
+    font-size: 0.85rem;
+    padding: 0.4rem 0.9rem;
   }
 
   .hero-text h1 {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
+    line-height: 1.2;
+    margin-bottom: 1rem;
   }
 
   .hero-text p {
-    font-size: 1.1rem;
+    font-size: 1rem;
+    margin-bottom: 2rem;
   }
 
   .hero-buttons {
     flex-direction: column;
     gap: 1rem;
+    margin-bottom: 2.5rem;
   }
 
   .hero-buttons .btn {
     width: 100%;
     text-align: center;
-  }
-
-  .hero-features {
-    gap: 1.5rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-
-  .feature-item .feature-icon {
-    width: 45px;
-    height: 45px;
-  }
-
-  .feature-item span {
-    font-size: 0.75rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .hero-text h1 {
-    font-size: 2rem;
-  }
-
-  .hero-text p {
+    padding: 1rem 1.5rem;
     font-size: 1rem;
   }
 
   .hero-features {
-    gap: 1rem;
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
+    gap: 1.2rem;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 1.5rem;
   }
 
   .feature-item .feature-icon {
-    width: 35px;
-    height: 35px;
+    width: 42px;
+    height: 42px;
   }
 
   .feature-item span {
-    font-size: 0.65rem;
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding: 0 1rem;
+  }
+
+  .hero-text h1 {
+    font-size: 1.8rem;
+  }
+
+  .hero-text p {
+    font-size: 0.95rem;
+  }
+
+  .hero-buttons .btn {
+    padding: 0.9rem 1.2rem;
+    font-size: 0.95rem;
+  }
+
+  .hero-features {
+    gap: 0.8rem;
+  }
+
+  .feature-item .feature-icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .feature-item span {
+    font-size: 0.6rem;
   }
 }
