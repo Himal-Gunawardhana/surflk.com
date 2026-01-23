@@ -39,7 +39,6 @@ function Navbar() {
             <li><a href="#packages" onClick={() => setMenuOpen(false)}>Packages</a></li>
             <li><a href="#menu" onClick={() => setMenuOpen(false)}>Menu</a></li>
             <li><a href="#contact" onClick={() => setMenuOpen(false)}>Contact</a></li>
-            <li><a href="#book" className="btn btn-book" onClick={() => setMenuOpen(false)}>Book Now</a></li>
           </ul>
         </div>
       </div>
