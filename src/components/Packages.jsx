@@ -183,7 +183,7 @@ function Packages() {
                   </div>
                 )}
                 <div className="discounts">{pack.discounts}</div>
-                <a href="#book" className="btn btn-primary">Book Now</a>
+                <a href="https://secretsurf.rezerveme.com/" target="_blank" rel="noopener noreferrer" className="btn btn-primary">Book Now</a>
               </div>
             ))}
           </div>
@@ -211,7 +211,7 @@ function Packages() {
                   </ul>
                 </div>
                 <div className="pricing-note">{pack.pricing}</div>
-                <a href="#book" className="btn btn-primary">Book Now</a>
+                <a href="https://secretsurf.rezerveme.com/" target="_blank" rel="noopener noreferrer" className="btn btn-primary">Book Now</a>
               </div>
             ))}
           </div>
@@ -237,7 +237,7 @@ function Packages() {
                   </ul>
                 </div>
                 {pack.note && <div className="note">{pack.note}</div>}
-                <a href="#book" className="btn btn-primary">Contact Us</a>
+                <a href="https://secretsurf.rezerveme.com/" target="_blank" rel="noopener noreferrer" className="btn btn-primary">Contact Us</a>
               </div>
             ))}
           </div>

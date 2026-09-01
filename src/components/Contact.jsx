@@ -195,7 +195,7 @@ function Contact() {
               </button>
 
               <p className="form-note">
-                Or book directly through our partner platforms (link will be provided)
+                Or book directly through our <a href="https://secretsurf.rezerveme.com/" target="_blank" rel="noopener noreferrer">booking platform</a>
               </p>
             </form>
           </div>
