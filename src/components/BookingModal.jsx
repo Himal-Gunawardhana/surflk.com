@@ -34,7 +34,7 @@ const BookingModal = ({ onClose, preselectedPackage = '' }) => {
       })
       .catch((error) => {
         console.log('FAILED...', error);
-        setStatus('error');
+        setStatus(`error: ${error?.text || error?.message || 'Unknown error'}`);
       });
   };
 
@@ -117,8 +117,8 @@ const BookingModal = ({ onClose, preselectedPackage = '' }) => {
                 ></textarea>
               </div>
 
-              {status === 'error' && (
-                <p className="error-message">Oops! Something went wrong. Please try again later.</p>
+              {status.startsWith('error') && (
+                <p className="error-message">Oops! Something went wrong: {status.replace('error: ', '')}</p>
               )}
 
               <button 
