@@ -12,6 +12,7 @@ const BookingModal = ({ onClose, preselectedPackage = '' }) => {
     units: 1,
     extra_dorm_days: 0,
     extra_surf_sessions: 0,
+    include_breakfast: false,
     message: ''
   });
   const [status, setStatus] = useState('idle');
@@ -24,8 +25,11 @@ const BookingModal = ({ onClose, preselectedPackage = '' }) => {
   }, [preselectedPackage]);
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    const { name, value, type, checked } = e.target;
+    setFormData(prev => ({ 
+      ...prev, 
+      [name]: type === 'checkbox' ? checked : value 
+    }));
   };
 
   const handleSubmit = (e) => {
@@ -38,13 +42,15 @@ const BookingModal = ({ onClose, preselectedPackage = '' }) => {
     // Addons cost
     const dormAddonPrice = 2500;
     const surfAddonPrice = 4000;
+    const breakfastPrice = 2000; // Standardized breakfast price
     
     const baseTotal = selectedPkg.basePrice * formData.units;
     const dormTotal = formData.extra_dorm_days * dormAddonPrice;
     const surfTotal = formData.extra_surf_sessions * surfAddonPrice;
+    const breakfastTotal = formData.include_breakfast ? (breakfastPrice * formData.units) : 0;
     
     // Calculate final total cost
-    const totalCost = (baseTotal + dormTotal + surfTotal).toLocaleString();
+    const totalCost = (baseTotal + dormTotal + surfTotal + breakfastTotal).toLocaleString();
     const orderId = Math.floor(100000 + Math.random() * 900000).toString();
 
     // Prepare line items for the invoice
@@ -55,6 +61,14 @@ const BookingModal = ({ onClose, preselectedPackage = '' }) => {
         price: selectedPkg.price
       }
     ];
+
+    if (formData.include_breakfast) {
+      ordersList.push({
+        package_name: "Addon: Breakfast Included",
+        units: formData.units,
+        price: breakfastPrice.toLocaleString()
+      });
+    }
 
     if (formData.extra_dorm_days > 0) {
       ordersList.push({
@@ -191,6 +205,20 @@ const BookingModal = ({ onClose, preselectedPackage = '' }) => {
 
               <div className="addons-section">
                 <h4>Optional Addons</h4>
+                
+                <div className="checkbox-group" style={{ marginBottom: '15px' }}>
+                  <label style={{ display: 'flex', alignItems: 'center', cursor: 'pointer', fontWeight: 'normal' }}>
+                    <input 
+                      type="checkbox" 
+                      name="include_breakfast" 
+                      checked={formData.include_breakfast}
+                      onChange={handleChange}
+                      style={{ width: 'auto', marginRight: '10px' }}
+                    />
+                    Include Breakfast (LKR 2,000 / guest)
+                  </label>
+                </div>
+
                 <div className="form-group-row" style={{ display: 'flex', gap: '15px' }}>
                   <div className="form-group" style={{ flex: 1 }}>
                     <label htmlFor="extra_dorm_days">Extra Dorm Nights</label>
@@ -240,7 +268,7 @@ const BookingModal = ({ onClose, preselectedPackage = '' }) => {
                 className="btn btn-primary submit-btn"
                 disabled={status === 'loading'}
               >
-                {status === 'loading' ? 'Sending...' : `Book Now - LKR ${((allPackages.find(p => p.name === formData.package_name)?.basePrice || 0) * formData.units + formData.extra_dorm_days * 2500 + formData.extra_surf_sessions * 4000).toLocaleString()}`}
+                {status === 'loading' ? 'Sending...' : `Book Now - LKR ${((allPackages.find(p => p.name === formData.package_name)?.basePrice || 0) * formData.units + formData.extra_dorm_days * 2500 + formData.extra_surf_sessions * 4000 + (formData.include_breakfast ? 2000 * formData.units : 0)).toLocaleString()}`}
               </button>
             </form>
           </>
