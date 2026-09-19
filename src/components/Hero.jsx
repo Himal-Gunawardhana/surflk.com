@@ -8,7 +8,7 @@ import logoDrone from '../assets/logo-drone.png';
 import logoOpenMic from '../assets/logo-openmic.png';
 import logoBYOB from '../assets/logo-boyb.png';
 
-function Hero() {
+function Hero({ onBook }) {
   return (
     <section id="home" className="hero">
       <div className="hero-overlay"></div>
@@ -18,7 +18,7 @@ function Hero() {
           <h1>Experience The Ultimate Beach Lifestyle</h1>
           <p>Surf, Stay, Dine & Create Memories - All in One Place</p>
           <div className="hero-buttons">
-            <a href="https://secretsurf.rezerveme.com/" target="_blank" rel="noopener noreferrer" className="btn btn-book">Book Now</a>
+            <button onClick={() => onBook()} className="btn btn-book">Book Now</button>
             <a href="#packages" className="btn btn-primary">View Packages</a>
             <a href="#menu" className="btn btn-secondary">See Our Menu</a>
           </div>

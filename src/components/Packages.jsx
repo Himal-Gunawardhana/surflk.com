@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './Packages.css';
 
-function Packages() {
+function Packages({ onBook }) {
   const [activeCategory, setActiveCategory] = useState('day');
 
   const dayPacks = [
@@ -183,7 +183,7 @@ function Packages() {
                   </div>
                 )}
                 <div className="discounts">{pack.discounts}</div>
-                <a href="https://secretsurf.rezerveme.com/" target="_blank" rel="noopener noreferrer" className="btn btn-primary">Book Now</a>
+                <button onClick={() => onBook(pack.name)} className="btn btn-primary">Book Now</button>
               </div>
             ))}
           </div>
@@ -211,7 +211,7 @@ function Packages() {
                   </ul>
                 </div>
                 <div className="pricing-note">{pack.pricing}</div>
-                <a href="https://secretsurf.rezerveme.com/" target="_blank" rel="noopener noreferrer" className="btn btn-primary">Book Now</a>
+                <button onClick={() => onBook(pack.name)} className="btn btn-primary">Book Now</button>
               </div>
             ))}
           </div>
@@ -237,7 +237,7 @@ function Packages() {
                   </ul>
                 </div>
                 {pack.note && <div className="note">{pack.note}</div>}
-                <a href="https://secretsurf.rezerveme.com/" target="_blank" rel="noopener noreferrer" className="btn btn-primary">Contact Us</a>
+                <button onClick={() => onBook(pack.name)} className="btn btn-primary">Contact Us</button>
               </div>
             ))}
           </div>
