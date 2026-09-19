@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import emailjs from '@emailjs/browser';
+import { allPackages } from '../data/packages';
 import './BookingModal.css';
 
 const BookingModal = ({ onClose, preselectedPackage = '' }) => {
@@ -7,10 +8,18 @@ const BookingModal = ({ onClose, preselectedPackage = '' }) => {
     user_name: '',
     user_email: '',
     date: '',
-    package_name: preselectedPackage,
+    package_name: preselectedPackage || allPackages[0].name,
+    units: 1,
     message: ''
   });
-  const [status, setStatus] = useState('idle'); // idle, loading, success, error
+  const [status, setStatus] = useState('idle');
+
+  // Make sure we update if preselectedPackage changes
+  useEffect(() => {
+    if (preselectedPackage) {
+      setFormData(prev => ({ ...prev, package_name: preselectedPackage }));
+    }
+  }, [preselectedPackage]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -21,13 +30,38 @@ const BookingModal = ({ onClose, preselectedPackage = '' }) => {
     e.preventDefault();
     setStatus('loading');
 
-    // EmailJS credentials
+    // Find the selected package to get the price
+    const selectedPkg = allPackages.find(p => p.name === formData.package_name) || allPackages[0];
+    
+    // Calculate total cost
+    const totalCost = (selectedPkg.basePrice * formData.units).toLocaleString();
+    const orderId = Math.floor(100000 + Math.random() * 900000).toString();
+
+    // Prepare exactly the variables the EmailJS template expects
+    const templateParams = {
+      order_id: orderId,
+      email: formData.user_email,
+      cost: {
+        total: totalCost
+      },
+      orders: [
+        {
+          package_name: formData.package_name,
+          units: formData.units,
+          price: selectedPkg.price
+        }
+      ],
+      // Adding these just in case you use them elsewhere
+      user_name: formData.user_name,
+      message: formData.message,
+      date: formData.date
+    };
+
     const serviceId = 'service_ldxhgtm';
     const templateId = 'template_lk2m5i2';
     const publicKey = 'Se4FnW1InleqZ4Cky';
 
-    // Send the email using the form data
-    emailjs.send(serviceId, templateId, formData, publicKey)
+    emailjs.send(serviceId, templateId, templateParams, publicKey)
       .then((response) => {
         console.log('SUCCESS!', response.status, response.text);
         setStatus('success');
@@ -93,16 +127,36 @@ const BookingModal = ({ onClose, preselectedPackage = '' }) => {
                 />
               </div>
 
-              <div className="form-group">
-                <label htmlFor="package_name">Selected Package</label>
-                <input 
-                  type="text" 
-                  id="package_name" 
-                  name="package_name" 
-                  value={formData.package_name}
-                  onChange={handleChange}
-                  placeholder="e.g., Secret Day Chill Pack"
-                />
+              <div className="form-group-row" style={{ display: 'flex', gap: '15px' }}>
+                <div className="form-group" style={{ flex: 2 }}>
+                  <label htmlFor="package_name">Select Package</label>
+                  <select 
+                    id="package_name" 
+                    name="package_name" 
+                    value={formData.package_name}
+                    onChange={handleChange}
+                    required
+                  >
+                    {allPackages.map(pkg => (
+                      <option key={pkg.name} value={pkg.name}>
+                        {pkg.name} - LKR {pkg.price}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+                
+                <div className="form-group" style={{ flex: 1 }}>
+                  <label htmlFor="units">Quantity / Guests</label>
+                  <input 
+                    type="number" 
+                    id="units" 
+                    name="units" 
+                    value={formData.units}
+                    onChange={handleChange}
+                    min="1"
+                    required 
+                  />
+                </div>
               </div>
 
               <div className="form-group">
