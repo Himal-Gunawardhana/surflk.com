@@ -40,7 +40,8 @@ const BookingModal = ({ onClose, preselectedPackage = '' }) => {
     // Prepare exactly the variables the EmailJS template expects
     const templateParams = {
       order_id: orderId,
-      email: formData.user_email,
+      email: formData.user_email,       // For body: {{email}}
+      user_email: formData.user_email,  // For To: {{user_email}}
       cost: {
         total: totalCost
       },
